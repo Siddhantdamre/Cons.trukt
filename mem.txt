@@ -1,0 +1,23 @@
+-- Enable the vector extension for AI similarity search
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Centralized Task Ledger (CSI MasterFormat Compliant)
+CREATE TABLE smart_tasks (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    wbs_code VARCHAR(20), -- e.g., '03.30.00' for Cast-in-Place Concrete
+    task_name TEXT,
+    specification_summary TEXT,
+    embedding vector(1536), -- Vectorized project specs for RAG
+    dependencies UUID[] DEFAULT '{}',
+    actual_start_date TIMESTAMPTZ,
+    actual_end_date TIMESTAMPTZ,
+    completion_percentage FLOAT DEFAULT 0.0
+);
+
+-- Land Grant Assignment Table
+CREATE TABLE land_parcels (
+    parcel_id UUID PRIMARY KEY,
+    blockchain_hash TEXT UNIQUE, -- Pointer to the Smart Contract
+    zoning_details JSONB,
+    boundary_polygon GEOMETRY(POLYGON, 4326) -- GIS integration
+);
