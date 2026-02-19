@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract LandGrantOS {
+    struct Parcel {
+        uint256 id;
+        address owner;
+        string zoningStatus;
+        bool isDevelopmentReady;
+    }
+  
+    mapping(uint256 => Parcel) public parcels;
+
+    // Automated assignment based on permit verification
+    function assignParcel(uint256 _id, address _to, string memory _zoning) public {
+        parcels[_id] = Parcel(_id, _to, _zoning, true);
+    }
+}
