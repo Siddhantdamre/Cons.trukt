@@ -1,0 +1,23 @@
+﻿OBJECTID,SUPERVISOR,LOCATIONID,WARD,EMAIL,GIS_ID,GLOBALID,CREATOR,CREATED,EDITOR,EDITED,SHAPEAREA,SHAPELEN
+1,LAREON BRENT,Loc_403,Ward 4,lareon.brent@dc.gov,ConstructionPermitsBoundary_1,{5D5ACB20-2206-48BE-BC74-9163341E75F8},,,,,0,0
+2,PAUL CARRAWAY,Loc_401,Ward 4,paul.carraway@dc.gov,ConstructionPermitsBoundary_2,{4ACB4A4E-E87E-4153-AFFA-3F0CFBD52AD0},,,,,0,0
+3,NICOLE SUMMERS,Loc_302,Ward 4,nicole.summers@dc.gov,ConstructionPermitsBoundary_3,{220BDA63-4BFA-41B4-93EB-56945F4AFB5A},,,,,0,0
+4,HAYWOOD RICHARDSON,Loc_402,Ward 4,haywood.richardson@dc.gov,ConstructionPermitsBoundary_4,{69EA8626-D365-4CEA-BF69-04EC6AF646CA},,,,,0,0
+5,MICHAEL JERNAGIN,Loc_503,Ward 4,michael.jernagin@dc.gov,ConstructionPermitsBoundary_5,{73829E99-DC0F-4747-8247-2128C6786177},,,,,0,0
+6,RAYMOND MCLEOD,Loc_501,Ward 4,raymond.mcleod@dc.gov,ConstructionPermitsBoundary_6,{891F5070-5C47-4FB0-806A-34BF8E5132E8},,,,,0,0
+7,GARY BLUNT,Loc_301,Ward 3,gary.blunt@dc.gov,ConstructionPermitsBoundary_7,{B832B270-1B94-4D7F-BB7A-26DF099210D1},,,,,0,0
+8,EDGAR PROCTOR,Loc_101,Ward 4,edgar.proctor@dc.gov,ConstructionPermitsBoundary_8,{69FF317F-1888-4948-9528-6671555A69C2},,,,,0,0
+9,DAVE HILL,Loc_102,Ward 4,dave.hill@dc.gov,ConstructionPermitsBoundary_9,{A28F4F0A-9ED1-4EB0-B371-C7A117FF813A},,,,,0,0
+10,DWAYNE NORRIS,Loc_502,Ward 5,dwayne.norris@dc.gov,ConstructionPermitsBoundary_10,{D554DEB9-10D6-477D-8EA0-757013DA07CC},,,,,0,0
+11,VACARA MATTHEWS,Loc_204,Ward 3,vacara.matthews@dc.gov,ConstructionPermitsBoundary_11,{636F44D6-A611-41E0-A111-F835A27522CA},,,,,0,0
+12,MILLICENT HARRIS,Loc_201,Ward 3,millicent2.harris@dc.gov,ConstructionPermitsBoundary_12,{A01DF80E-ECF8-409F-94DD-32B794DD5725},,,,,0,0
+13,RONALD TATE,Loc_701,Ward 5,ronald.tate@dc.gov,ConstructionPermitsBoundary_13,{055ACB66-14BC-41D6-B682-B51AD1CF4521},,,,,0,0
+14,KENNETH TOYER,Loc_601,Ward 5,kenneth.toyer@dc.gov,ConstructionPermitsBoundary_14,{33F06EAB-F1EE-4CC6-8C03-C06633B9A415},,,,,0,0
+15,JAMES CHILDS,Loc_203,Ward 2,james.childs@dc.gov,ConstructionPermitsBoundary_15,{49A715E4-7987-4B89-8F9F-EC8522A341E0},,,,,0,0
+16,ROBERT WHITE,Loc_602,Ward 5,robert.white@dc.gov,ConstructionPermitsBoundary_16,{4B0F7A70-3105-41AF-BDF9-A6980FB13ADE},,,,,0,0
+17,NATHANIEL TURNER,Loc_202,Ward 2,nathaniel.turners@dc.gov,ConstructionPermitsBoundary_17,{2191E052-DB6B-47D3-AE0F-1D7B01DE5A76},,,,,0,0
+18,DIRK CRAIG,Loc_604,Ward 7,dirk.craig@dc.gov,ConstructionPermitsBoundary_18,{EE74867A-B636-4E3D-86A4-AC05CA58B978},,,,,0,0
+19,DERRICK PERRY,Loc_702,Ward 7,derrick.perry@dc.gov,ConstructionPermitsBoundary_19,{BAC202F7-0FC4-47EC-84AC-AD979134FCD3},,,,,0,0
+20,KENNETH TOYER,Loc_603,Ward 2,kenneth.toyer@dc.gov,ConstructionPermitsBoundary_20,{5D56E8DD-C697-453F-9E95-5A3B6412D573},,,,,0,0
+21,ROBERT LEE,Loc_801,Ward 7,robert.lee@dc.gov,ConstructionPermitsBoundary_21,{18A4406B-1D0F-40FE-A7CE-550E533B4E71},,,,,0,0
+22,DAVID WELLS,Loc_802,Ward 8,david.wells@dc.gov,ConstructionPermitsBoundary_22,{A1D63271-0119-42CE-84B9-6C54B95B9E8B},,,,,0,0

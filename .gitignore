@@ -1,0 +1,14 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+
+# Large local-only datasets that exceed practical GitHub repository limits
+training_data/Building_Permits_Contacts.csv
+training_data/Plan_Review.csv
+training_data/Plumbing_Permits.csv
