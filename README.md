@@ -38,6 +38,7 @@ The current pipeline is centered around [`main.py`](./main.py):
 ```text
 .
 |-- README.md
+|-- README.txt
 |-- main.py
 |-- accuracyvalidmain.py
 |-- cog_engine.py
@@ -53,14 +54,13 @@ The current pipeline is centered around [`main.py`](./main.py):
 |-- mem.txt
 |-- safetynet.txt
 |-- plan.pdf
-|-- archive (2).zip
-|-- archive (4).zip
-|-- archive (6).zip
+|-- unnamed.png
+|-- unnamed (1).png
+|-- training_data/
+|-- c_os_memory/
 |-- chatgptaspect1.md
 |-- For a software-only AI construction mana.md
-|-- cons-trukt-os (3).ipynb
-|-- c_os_memory/
-`-- training_data/
+`-- cons-trukt-os (3).ipynb
 ```
 
 ## File-By-File Guide
@@ -110,21 +110,29 @@ The current pipeline is centered around [`main.py`](./main.py):
 - `plan.pdf`
   Local example PDF used as the default plan input.
 
+- `unnamed.png`, `unnamed (1).png`
+  Local project images included from the source workspace.
+
 - `chatgptaspect1.md`, `For a software-only AI construction mana.md`, `cons-trukt-os (3).ipynb`
   Research and ideation artifacts that capture the surrounding product vision.
 
 ## Included Data
 
-This repo now includes the project artifacts that are practical to store in a normal GitHub repository:
+This branch is intended to mirror the full local project, excluding only throwaway cache directories such as `__pycache__` and `.pytest_cache`.
+
+Included data assets:
 
 - `c_os_memory/`
   Local persisted Chroma database generated from historical permit data and used by the retrieval layer.
 
 - `training_data/Boiler_Permits.csv`
 - `training_data/Building_Permits.csv`
-- `training_data/Plumbing_Permits_Contacts.csv`
+- `training_data/Building_Permits_Contacts.csv`
 - `training_data/Construction_Permit_Boundary.csv`
-  Repo-safe raw permit data currently included on this branch.
+- `training_data/Plan_Review.csv`
+- `training_data/Plumbing_Permits.csv`
+- `training_data/Plumbing_Permits_Contacts.csv`
+  Raw and processed permit datasets from the local workspace.
 
 - `training_data/archive (2).zip`
 - `training_data/archive (4).zip`
@@ -136,15 +144,16 @@ This repo now includes the project artifacts that are practical to store in a no
 - `training_data/archive (6)/Construction_Dataset.csv`
   Extracted smaller datasets used by training and experimentation.
 
-## Large Source Files Not Committed
+## Git LFS Requirement
 
-Some raw municipal CSV files used locally are intentionally not included because they are too large for normal GitHub repository workflows or would make the repository unnecessarily heavy:
+This repository uses Git LFS for the large datasets and binary artifacts. After cloning, run:
 
-- `training_data/Building_Permits_Contacts.csv`
-- `training_data/Plan_Review.csv`
-- `training_data/Plumbing_Permits.csv`
+```bash
+git lfs install
+git lfs pull
+```
 
-If you want a fully reproducible local environment, place the missing oversized datasets back under `training_data/` with the same filenames.
+Without `git lfs pull`, you will only see lightweight pointer files for the large datasets, memory database, PDF, and image assets.
 
 ## Dependencies
 
@@ -246,7 +255,7 @@ These are important to know before using the system:
 - There is no dependency lockfile or reproducible environment specification.
 - `pytest` is not isolated from external dependencies, so test collection fails without local packages like `chromadb`.
 - `train_all_data.py` only scans top-level files in `training_data/` and does not recurse into nested extracted folders.
-- The README that originally shipped with the repo overstated the implementation and mentioned components not present in the current codebase.
+- The previous README overstated the implementation and mentioned components not present in the current codebase.
 - Secrets and connection strings should not remain hard-coded in source files.
 
 ## Suggested Next Improvements
@@ -256,7 +265,7 @@ If you continue developing this project, the next best steps are:
 1. Add a `requirements.txt` or `pyproject.toml`.
 2. Replace hard-coded paths and secrets with environment variables.
 3. Fix the `main.py` task parsing bug.
-4. Add a real `.gitignore`.
+4. Keep large datasets in Git LFS or move them to dedicated object storage.
 5. Rework training ingestion to support nested datasets cleanly.
 6. Add unit tests with mocks for Chroma, Ollama, and PostgreSQL.
 7. Separate prototype research notes from the runnable application.
