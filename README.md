@@ -1,136 +1,98 @@
-# 🏗️ C-OS Nexus (Construction Operating System)
+# Cons.trukt - Construction Intelligence OS
 
-[![Version](https://img.shields.io/badge/Version-v60.0_Prometheus-blue.svg)]()
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
-[![Python](https://img.shields.io/badge/Python-3.9+-yellow.svg)]()
-[![FastAPI](https://img.shields.io/badge/Framework-FastAPI-009688.svg)]()
-[![AI](https://img.shields.io/badge/Agentic_AI-Llama_3.2-purple.svg)]()
+[![Live Demo](https://img.shields.io/badge/Live_Demo-open-2DA44E?style=for-the-badge&logo=githubpages)](https://siddhantdamre.github.io/Cons.trukt/)
+[![Portfolio Guide](https://img.shields.io/badge/Portfolio-context-0969DA?style=for-the-badge&logo=github)](https://github.com/Siddhantdamre/Siddhantdamre/blob/main/PORTFOLIO.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**C-OS Nexus** is an autonomous, real-time cyber-physical operating system for the construction industry. It bridges the "Automation Gap" by actively ingesting raw site data (drone scans, borehole logs), applying rigorous geotechnical physics, and outputting liability-backed engineering decisions in milliseconds.
+Cons.trukt is a construction AI prototype for converting messy project inputs into structured engineering, risk, carbon, and audit outputs. It is framed as a construction operating layer: ingest site documents, interpret risk signals, produce a traceable decision record, and expose results through an API or dashboard.
 
-C-OS eliminates the multi-week latency between site discovery and engineering action, autonomously optimizing for **Risk, Schedule, Cash Flow, and Carbon Equity (SDG-12)**.
+## Recruiter Quick Look
 
----
+| What to check | Why it matters |
+| --- | --- |
+| [Live surface](https://siddhantdamre.github.io/Cons.trukt/) | Fast overview of the product concept and demo direction. |
+| FastAPI API path | Shows backend/API thinking rather than only notebook work. |
+| Geotechnical logic | Demonstrates domain-specific reasoning beyond generic LLM wrapping. |
+| Immutable ledger idea | Shows auditability and responsible AI/product thinking. |
 
-## 🚀 The Core Problem Solved
-Traditional construction projects bleed capital due to data silos. By the time a geotechnical engineer analyzes a soil report in an Excel sheet, the pile driver is already on site. 
-**C-OS functions as a Real-Time Decision Support System**, acting as the connective intelligence layer between physical site sensors and project management software (like Procore or Autodesk Build).
+## Problem
 
-## ✨ Enterprise Features
+Construction teams often make decisions from disconnected PDFs, borehole logs, scans, spreadsheets, and project-management updates. Cons.trukt explores how to turn that fragmented input into a decision-support workflow that is faster, more traceable, and easier to review.
 
-### 1. 🔬 Validated Geotechnical Physics Engine
-* **Terzaghi Bearing Capacity:** Evaluates shallow and deep foundation viability instantly.
-* **Rock Mechanics Override:** Detects global geological profiles (e.g., South Korean "Yeon-am" soft rock vs. "Gyeong-am" hard bedrock) and adjusts calculations to Rock Mass Rating heuristics ($N \ge 50 \rightarrow 5000 \text{ kPa}$).
-* **Seismic Liquefaction Detection:** Autonomously flags high-risk profiles (e.g., loose sands with a high water table) and prescribes remediation (e.g., Deep Vibro-Compaction).
+## Core Capabilities
 
-### 2. 👁️ Autonomous Reality Capture (ARC)
-* Processes noisy, real-world PDF blueprints and site scans at 300 DPI.
-* Utilizes Canny edge gradients and computer vision to calculate terrain density indices, automatically flagging highly complex topography for structural review.
+- Document and site-data ingestion for construction workflows.
+- Geotechnical calculations and risk flagging for foundation decisions.
+- Computer-vision style processing for blueprint or scan-derived signals.
+- Carbon and waste tracking for sustainability-aware project reporting.
+- Hash-backed ledger records for audit trails and dispute review.
+- API-first design so the intelligence layer can plug into dashboards or ERP tools.
 
-### 3. 🌱 Carbon Equity & SDG-12 Compliance
-* Transforms site waste into bankable environmental assets.
-* Calculates precise CO2-e mitigation ($0.54\text{ tons } CO_2\text{-e/ton}$ diverted) based on a target 82% circular economy waste recovery rate.
+## Architecture
 
-### 4. 🔐 The "Golden Record" (Immutable Ledger)
-* Every AI and physics-based decision is cryptographically signed using **SHA-512 hashing**.
-* Creates an unalterable audit trail for liability protection, dispute resolution, and insurance compliance.
+```mermaid
+flowchart LR
+    A[PDF / CSV / JSON input] --> B[Polymorphic ingestor]
+    B --> C[FastAPI service]
+    C --> D[Physics and risk engine]
+    C --> E[Document / vision parser]
+    D --> F[Decision ledger]
+    E --> F
+    F --> G[Dashboard or API response]
+```
 
-### 5. 🤖 Multi-Agent Swarm (Llama 3.2 RAG)
-* **Engineer Agent:** Cross-references 5,900+ historical precedents to ensure code compliance.
-* **ESG Auditor:** Tracks sustainability metrics.
-* **Logistics Agent:** Projects supply chain volatility and lead times.
-* Outputs natively in **CSI MasterFormat** codes for instant ERP integration.
-
----
-
-## 📐 System Architecture :
-
-C-OS is built as a highly scalable, event-driven API Microservice.
-
-1. **Polymorphic Ingestor:** Accepts `.csv` (Sensor logs/Boreholes), `.pdf` (Drone/ARC scans), or `.json` (BIM models).
-2. **Nexus Core (FastAPI):** Asynchronous processing engine handling physics math and agentic negotiation.
-3. **Frontend Dashboard:** A Streamlit-based executive view for real-time risk assessment.
-
----
-
-## ⚙️ Installation & Deployment :
-
-### Option A: Docker Deployment (Recommended for Production)
-The quickest way to deploy the API with all required system binaries (Tesseract, Poppler).
+## Example API Shape
 
 ```bash
-# 1. Clone the repository
-git clone [https://github.com/YOUR_USERNAME/c-os-nexus.git](https://github.com/YOUR_USERNAME/c-os-nexus.git)
-cd c-os-nexus
+curl -X POST "http://localhost:8000/api/v1/ingest" \
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@site_borehole_log.csv"
+```
 
-# 2. Build the Docker container
-docker build -t c-os-nexus .
+Example output:
 
-# 3. Run the server
-docker run -p 8000:8000 c-os-nexus
-
-Option B: Local Python Setup
-Ensure you have poppler-utils and tesseract-ocr installed on your host machine.
-
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Start the Ollama Neural Engine (Requires Ollama installed locally)
-ollama serve &
-ollama pull llama3.2
-
-📡 API Usage
-Endpoint: /api/v1/ingest
-Upload any site data file. The polymorphic router will identify the data type, apply the correct physics/vision models, and return a standardized JSON payload.
-
-cURL Example:
-
-Bash - 
-curl -X 'POST' \
-  'http://localhost:8000/api/v1/ingest' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@site_borehole_log.csv'
-JSON Response Example:
-
-JSON - 
+```json
 {
-    "status": "SUCCESS",
-    "processing_time": "0.0412s",
-    "ledger_hash": "38cb3aeb3d91069bff1563f1033151c2caedbe4dea...",
-    "payload": {
-        "type": "GEOTECH_ANALYSIS",
-        "recommendation": "DEEP_VIBRO_COMPACTION",
-        "layers": [
-            {
-                "depth": 3.0,
-                "capacity": 73.0,
-                "decision": "REJECTED (Settlement Risk)"
-            },
-            {
-                "depth": 6.0,
-                "capacity": 0.0,
-                "decision": "CRITICAL: LIQUEFACTION RISK"
-            },
-            {
-                "depth": 18.0,
-                "capacity": 5000.0,
-                "decision": "APPROVED (Bedrock Socket)"
-            }
-        ]
-    }
+  "status": "SUCCESS",
+  "processing_time": "0.0412s",
+  "ledger_hash": "38cb3aeb3d91069bff1563f1033151c2caedbe4dea...",
+  "payload": {
+    "type": "GEOTECH_ANALYSIS",
+    "recommendation": "DEEP_VIBRO_COMPACTION",
+    "risk_level": "HIGH"
+  }
 }
-👨‍💻 Executive Dashboard (Zero-UI) -
-To launch the client-facing visual interface (assuming you have deployed the Streamlit module):
+```
 
-Bash - 
-"streamlit run dashboard.py"
-This renders the Executive God-Mode view, translating the raw JSON API output into interactive geotechnical profiles, carbon tracking, and financial impact summaries.
+## Run Locally
 
-📄 License & Disclaimer
- - MIT License.
-
-Disclaimer: C-OS Nexus is a decision-support system. While built on rigorous physics (e.g., Terzaghi's bearing capacity equations), all outputs should be reviewed by a licensed Professional Engineer (PE) before physical construction begins.
-
-# 3. Boot the FastAPI Server
+```bash
+pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+If the dashboard module is available:
+
+```bash
+streamlit run dashboard.py
+```
+
+## Current Demo State
+
+The GitHub Pages surface gives a recruiter-friendly overview. The next strong demo is a Streamlit app with bundled sample blueprint and borehole files so reviewers can upload a fixture and see the generated risk ledger.
+
+## Roadmap
+
+- Add sample construction fixtures under `examples/`.
+- Add screenshots of API docs and dashboard output.
+- Add a Docker Compose path for one-command local review.
+- Add a hosted Streamlit demo with safe synthetic construction data.
+
+## Disclaimer
+
+This is a decision-support prototype, not a replacement for licensed engineering review.
+
+## License
+
+MIT
