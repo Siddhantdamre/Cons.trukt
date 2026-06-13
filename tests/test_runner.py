@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from cons_trukt.config import PipelineSettings, Settings
 from cons_trukt.pipeline.runner import Runner
-from cons_trukt.schemas import HazardReport, KnowledgeDocument, Precedent, Task
+from cons_trukt.schemas import HazardReport, Precedent, Task
 from cons_trukt.storage.postgres import StoredTask
 
 
@@ -38,7 +38,10 @@ class FakeRepository:
 
 def test_runner_applies_safety_override_and_exports_result(tmp_path):
     settings = Settings(
-        pipeline=PipelineSettings(default_input=tmp_path / "plan.pdf", results_dir=tmp_path / "results"),
+        pipeline=PipelineSettings(
+            default_input=tmp_path / "plan.pdf",
+            results_dir=tmp_path / "results",
+        ),
         project_root=tmp_path,
     )
     repository = FakeRepository()

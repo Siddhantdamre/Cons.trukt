@@ -45,7 +45,7 @@ class Task:
     hours: float
 
     @classmethod
-    def from_mapping(cls, data: dict[str, Any]) -> "Task":
+    def from_mapping(cls, data: dict[str, Any]) -> Task:
         wbs = str(data.get("wbs") or data.get("wbs_code") or "0.0").strip()
         name = str(data.get("name") or data.get("task_name") or "").strip()
         if not name:

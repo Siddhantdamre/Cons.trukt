@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable, Protocol
+from typing import Protocol
 
 from cons_trukt.config import RetrievalSettings
 from cons_trukt.exceptions import RetrievalError
@@ -51,7 +52,9 @@ class ChromaPrecedentStore:
             client = chromadb.PersistentClient(path=str(settings.chroma_path))
             self.collection = client.get_or_create_collection(name=settings.collection_name)
         except Exception as exc:
-            raise RetrievalError(f"Could not initialize Chroma at {settings.chroma_path}: {exc}") from exc
+            raise RetrievalError(
+                f"Could not initialize Chroma at {settings.chroma_path}: {exc}"
+            ) from exc
 
     def query(self, question: str, n_results: int | None = None) -> list[Precedent]:
         limit = n_results or self.settings.n_results

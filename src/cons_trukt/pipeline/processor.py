@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import csv
 import hashlib
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from cons_trukt.config import Settings
 from cons_trukt.exceptions import IngestionError
@@ -78,7 +78,11 @@ class DataProcessor:
             for row_index, row in enumerate(reader):
                 if max_rows is not None and row_index >= max_rows:
                     break
-                clean_row = {key: value for key, value in row.items() if value not in (None, "", "nan")}
+                clean_row = {
+                    key: value
+                    for key, value in row.items()
+                    if value not in (None, "", "nan")
+                }
                 if not clean_row:
                     continue
                 content = " | ".join(f"{key}: {value}" for key, value in clean_row.items())
@@ -127,5 +131,5 @@ class DataProcessor:
             relative = path.relative_to(root)
         except ValueError:
             relative = path
-        digest = hashlib.sha1(f"{relative.as_posix()}:{suffix}".encode("utf-8")).hexdigest()
+        digest = hashlib.sha1(f"{relative.as_posix()}:{suffix}".encode()).hexdigest()
         return digest[:24]

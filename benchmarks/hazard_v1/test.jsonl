@@ -1,0 +1,18 @@
+{"id":"test-low-01","text":"The warehouse addition is planned on level ground with a 3% service-yard fall.","label":"Low","category":"low-grade"}
+{"id":"test-low-02","text":"No stream or wetland buffer affects the proposed work.","label":"Low","category":"negation"}
+{"id":"test-low-03","text":"A topographic drawing is included, although the footprint is flat and dry.","label":"Low","category":"benign-context"}
+{"id":"test-low-04","text":"The existing slope does not exceed 7 percent anywhere near the foundation.","label":"Low","category":"negation"}
+{"id":"test-low-05","text":"The drainage note applies to an off-site parcel and not this project.","label":"Low","category":"negation"}
+{"id":"test-low-06","text":"Stable compacted fill supports the slab with no environmental constraints.","label":"Low","category":"flat-site"}
+{"id":"test-medium-01","text":"A seasonal creek buffer overlaps the staging area.","label":"Medium","category":"stream"}
+{"id":"test-medium-02","text":"The level site includes a shallow wetland along its southern edge.","label":"Medium","category":"wetland"}
+{"id":"test-medium-03","text":"Stormwater drainage crosses the parcel but the maximum grade is 8%.","label":"Medium","category":"drainage"}
+{"id":"test-medium-04","text":"Surface runoff collects beside the planned material storage zone.","label":"Medium","category":"surface-water"}
+{"id":"test-medium-05","text":"The permit requires protection of a riparian buffer.","label":"Medium","category":"buffer"}
+{"id":"test-medium-06","text":"A drainage easement limits excavation on the east side.","label":"Medium","category":"drainage"}
+{"id":"test-high-01","text":"The survey records a 17% grade immediately behind the building pad.","label":"High","category":"numeric-slope"}
+{"id":"test-high-02","text":"An unstable slope above the access road requires stabilization.","label":"High","category":"instability"}
+{"id":"test-high-03","text":"The proposed cut crosses a steep embankment near surface water.","label":"High","category":"explicit-slope"}
+{"id":"test-high-04","text":"Contours indicate a 24.5 percent incline across the excavation limits.","label":"High","category":"numeric-slope"}
+{"id":"test-high-05","text":"Recent landslide movement is documented near the northern boundary.","label":"High","category":"landslide"}
+{"id":"test-high-06","text":"A retaining wall is required because the grade is steep and eroding.","label":"High","category":"explicit-slope"}

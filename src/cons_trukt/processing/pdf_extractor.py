@@ -56,19 +56,29 @@ class PDFTextExtractor:
             import pytesseract
             from pdf2image import convert_from_path
         except ImportError as exc:
-            raise ExtractionError("pytesseract and pdf2image are required for OCR fallback.") from exc
+            raise ExtractionError(
+                "pytesseract and pdf2image are required for OCR fallback."
+            ) from exc
 
         if self.settings.tesseract_cmd:
             pytesseract.pytesseract.tesseract_cmd = str(self.settings.tesseract_cmd)
 
         try:
-            images = convert_from_path(
-                path,
-                poppler_path=str(self.settings.poppler_path) if self.settings.poppler_path else None,
-            )
+            if self.settings.poppler_path:
+                images = convert_from_path(
+                    path,
+                    poppler_path=str(self.settings.poppler_path),
+                )
+            else:
+                images = convert_from_path(path)
             workers = max(1, self.settings.ocr_workers)
             with ThreadPoolExecutor(max_workers=workers) as executor:
-                results = list(executor.map(lambda image: self._ocr_page(pytesseract, image), images))
+                results = list(
+                    executor.map(
+                        lambda image: self._ocr_page(pytesseract, image),
+                        images,
+                    )
+                )
             content = "\n".join(results)
         except Exception as exc:
             raise ExtractionError(f"OCR extraction failed for {path}: {exc}") from exc

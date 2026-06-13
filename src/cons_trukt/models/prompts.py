@@ -16,9 +16,10 @@ def build_task_prompt(
     max_blueprint_chars: int,
 ) -> str:
     blueprint = blueprint_text[:max_blueprint_chars].replace("{", "{{").replace("}", "}}")
-    history = "\n".join(
-        f"Source: {item.source}\n{item.content}" for item in precedents
-    ) or "No historical precedent retrieved."
+    history = (
+        "\n".join(f"Source: {item.source}\n{item.content}" for item in precedents)
+        or "No historical precedent retrieved."
+    )
     flags = "; ".join(hazard_report.flags) or "No explicit risk flags."
 
     return f"""

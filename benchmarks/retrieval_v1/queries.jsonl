@@ -1,0 +1,13 @@
+{"id":"q01","query":"geotechnical report for a steep hillside project","expected_sources":["slope-review"]}
+{"id":"q02","query":"engineered wall calculations and drainage permit","expected_sources":["retaining-wall"]}
+{"id":"q03","query":"environmental review before grading beside wetlands","expected_sources":["wetland-buffer"]}
+{"id":"q04","query":"base flood elevation and raised finished floor","expected_sources":["floodplain"]}
+{"id":"q05","query":"silt fence and sediment inspection after rain","expected_sources":["erosion-control"]}
+{"id":"q06","query":"detention calculations for a large paved area","expected_sources":["stormwater"]}
+{"id":"q07","query":"fire truck turning radius and clear access width","expected_sources":["fire-access"]}
+{"id":"q08","query":"wheelchair entrance ramp landings and handrails","expected_sources":["accessible-route"]}
+{"id":"q09","query":"preservation approval for windows in historic district","expected_sources":["historic-review"]}
+{"id":"q10","query":"asbestos survey before building demolition","expected_sources":["demolition-asbestos"]}
+{"id":"q11","query":"shoring next to neighboring foundation during excavation","expected_sources":["excavation-shoring"]}
+{"id":"q12","query":"weekend construction sound limits in residential area","expected_sources":["noise-hours"]}
+{"id":"q13","query":"geotechnical review for steep hillside construction","expected_sources":["slope-review"]}

@@ -1,0 +1,36 @@
+{"id":"train-low-01","text":"The proposed garage sits on a flat compacted pad with a 2% drainage fall.","label":"Low","category":"flat-site"}
+{"id":"train-low-02","text":"Survey notes show level terrain and no nearby water features.","label":"Low","category":"flat-site"}
+{"id":"train-low-03","text":"The parcel is dry, stable, and suitable for shallow foundations.","label":"Low","category":"flat-site"}
+{"id":"train-low-04","text":"Finished grade varies by less than 4 percent across the building footprint.","label":"Low","category":"low-grade"}
+{"id":"train-low-05","text":"No steep slope, wetland, stream, or drainage channel is present.","label":"Low","category":"negation"}
+{"id":"train-low-06","text":"The drawing labels an existing slope of 6% with no erosion evidence.","label":"Low","category":"low-grade"}
+{"id":"train-low-07","text":"A contour survey was completed, but the site remains nearly level.","label":"Low","category":"benign-context"}
+{"id":"train-low-08","text":"There is no surface water within the project boundary.","label":"Low","category":"negation"}
+{"id":"train-low-09","text":"The access road follows a gentle 5 percent grade.","label":"Low","category":"low-grade"}
+{"id":"train-low-10","text":"Existing soil is dense and the pad is outside all mapped buffers.","label":"Low","category":"flat-site"}
+{"id":"train-low-11","text":"Drainage improvements are not required for this interior renovation.","label":"Low","category":"negation"}
+{"id":"train-low-12","text":"The topographic plan confirms a broad level terrace.","label":"Low","category":"benign-context"}
+{"id":"train-medium-01","text":"A mapped wetland buffer touches the eastern property line.","label":"Medium","category":"wetland"}
+{"id":"train-medium-02","text":"The foundation is level, but a drainage channel crosses the rear yard.","label":"Medium","category":"drainage"}
+{"id":"train-medium-03","text":"Surface water collects near the temporary access route after storms.","label":"Medium","category":"surface-water"}
+{"id":"train-medium-04","text":"A seasonal stream requires erosion and sediment controls.","label":"Medium","category":"stream"}
+{"id":"train-medium-05","text":"The building pad is flat and lies inside a riparian buffer.","label":"Medium","category":"buffer"}
+{"id":"train-medium-06","text":"Wetland delineation is required before clearing begins.","label":"Medium","category":"wetland"}
+{"id":"train-medium-07","text":"Existing drainage swales must remain operational during construction.","label":"Medium","category":"drainage"}
+{"id":"train-medium-08","text":"The plan identifies surface runoff entering from the north boundary.","label":"Medium","category":"surface-water"}
+{"id":"train-medium-09","text":"A stream buffer is present, with no steep grades on the site.","label":"Medium","category":"stream"}
+{"id":"train-medium-10","text":"Work occurs beside a stormwater drainage easement.","label":"Medium","category":"drainage"}
+{"id":"train-medium-11","text":"The wetland is outside the footprint but within the review area.","label":"Medium","category":"wetland"}
+{"id":"train-medium-12","text":"Temporary dewatering may be needed because of shallow surface water.","label":"Medium","category":"surface-water"}
+{"id":"train-high-01","text":"The western embankment has a measured 18% slope.","label":"High","category":"numeric-slope"}
+{"id":"train-high-02","text":"Contours show a 22 percent grade below the proposed retaining wall.","label":"High","category":"numeric-slope"}
+{"id":"train-high-03","text":"A steep slope descends toward the excavation area.","label":"High","category":"explicit-slope"}
+{"id":"train-high-04","text":"The report documents unstable embankment soil and active erosion.","label":"High","category":"instability"}
+{"id":"train-high-05","text":"Landslide debris was observed upslope of the proposed structure.","label":"High","category":"landslide"}
+{"id":"train-high-06","text":"Slope stabilization is required before foundation excavation.","label":"High","category":"stabilization"}
+{"id":"train-high-07","text":"The access road crosses a 16.5% incline near the stream.","label":"High","category":"numeric-slope"}
+{"id":"train-high-08","text":"A retaining wall is required due to the steep grade.","label":"High","category":"explicit-slope"}
+{"id":"train-high-09","text":"Topographic sections indicate a 30 percent fall across the site.","label":"High","category":"numeric-slope"}
+{"id":"train-high-10","text":"The eroding bank threatens the planned utility trench.","label":"High","category":"instability"}
+{"id":"train-high-11","text":"Geotechnical review identifies slope failure risk after heavy rainfall.","label":"High","category":"instability"}
+{"id":"train-high-12","text":"The proposed cut is on a severe incline with unstable fill.","label":"High","category":"explicit-slope"}

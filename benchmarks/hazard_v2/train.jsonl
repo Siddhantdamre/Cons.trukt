@@ -1,0 +1,54 @@
+{"id":"train-low-01","text":"The proposed garage sits on a flat compacted pad with a 2% drainage fall.","label":"Low","category":"flat-site"}
+{"id":"train-low-02","text":"Survey notes show level terrain and no nearby water features.","label":"Low","category":"flat-site"}
+{"id":"train-low-03","text":"The parcel is dry, stable, and suitable for shallow foundations.","label":"Low","category":"flat-site"}
+{"id":"train-low-04","text":"Finished grade varies by less than 4 percent across the building footprint.","label":"Low","category":"low-grade"}
+{"id":"train-low-05","text":"No steep slope, wetland, stream, or drainage channel is present.","label":"Low","category":"negation"}
+{"id":"train-low-06","text":"The drawing labels an existing slope of 6% with no erosion evidence.","label":"Low","category":"low-grade"}
+{"id":"train-low-07","text":"A contour survey was completed, but the site remains nearly level.","label":"Low","category":"benign-context"}
+{"id":"train-low-08","text":"There is no surface water within the project boundary.","label":"Low","category":"negation"}
+{"id":"train-low-09","text":"The access road follows a gentle 5 percent grade.","label":"Low","category":"low-grade"}
+{"id":"train-low-10","text":"Existing soil is dense and the pad is outside all mapped buffers.","label":"Low","category":"flat-site"}
+{"id":"train-low-11","text":"Drainage improvements are not required for this interior renovation.","label":"Low","category":"negation"}
+{"id":"train-low-12","text":"The topographic plan confirms a broad level terrace.","label":"Low","category":"benign-context"}
+{"id":"train-medium-01","text":"A mapped wetland buffer touches the eastern property line.","label":"Medium","category":"wetland"}
+{"id":"train-medium-02","text":"The foundation is level, but a drainage channel crosses the rear yard.","label":"Medium","category":"drainage"}
+{"id":"train-medium-03","text":"Surface water collects near the temporary access route after storms.","label":"Medium","category":"surface-water"}
+{"id":"train-medium-04","text":"A seasonal stream requires erosion and sediment controls.","label":"Medium","category":"stream"}
+{"id":"train-medium-05","text":"The building pad is flat and lies inside a riparian buffer.","label":"Medium","category":"buffer"}
+{"id":"train-medium-06","text":"Wetland delineation is required before clearing begins.","label":"Medium","category":"wetland"}
+{"id":"train-medium-07","text":"Existing drainage swales must remain operational during construction.","label":"Medium","category":"drainage"}
+{"id":"train-medium-08","text":"The plan identifies surface runoff entering from the north boundary.","label":"Medium","category":"surface-water"}
+{"id":"train-medium-09","text":"A stream buffer is present, with no steep grades on the site.","label":"Medium","category":"stream"}
+{"id":"train-medium-10","text":"Work occurs beside a stormwater drainage easement.","label":"Medium","category":"drainage"}
+{"id":"train-medium-11","text":"The wetland is outside the footprint but within the review area.","label":"Medium","category":"wetland"}
+{"id":"train-medium-12","text":"Temporary dewatering may be needed because of shallow surface water.","label":"Medium","category":"surface-water"}
+{"id":"train-high-01","text":"The western embankment has a measured 18% slope.","label":"High","category":"numeric-slope"}
+{"id":"train-high-02","text":"Contours show a 22 percent grade below the proposed retaining wall.","label":"High","category":"numeric-slope"}
+{"id":"train-high-03","text":"A steep slope descends toward the excavation area.","label":"High","category":"explicit-slope"}
+{"id":"train-high-04","text":"The report documents unstable embankment soil and active erosion.","label":"High","category":"instability"}
+{"id":"train-high-05","text":"Landslide debris was observed upslope of the proposed structure.","label":"High","category":"landslide"}
+{"id":"train-high-06","text":"Slope stabilization is required before foundation excavation.","label":"High","category":"stabilization"}
+{"id":"train-high-07","text":"The access road crosses a 16.5% incline near the stream.","label":"High","category":"numeric-slope"}
+{"id":"train-high-08","text":"A retaining wall is required due to the steep grade.","label":"High","category":"explicit-slope"}
+{"id":"train-high-09","text":"Topographic sections indicate a 30 percent fall across the site.","label":"High","category":"numeric-slope"}
+{"id":"train-high-10","text":"The eroding bank threatens the planned utility trench.","label":"High","category":"instability"}
+{"id":"train-high-11","text":"Geotechnical review identifies slope failure risk after heavy rainfall.","label":"High","category":"instability"}
+{"id":"train-high-12","text":"The proposed cut is on a severe incline with unstable fill.","label":"High","category":"explicit-slope"}
+{"id":"v2-train-low-01","text":"A three-foot trench in stable rock has a secured ladder.","label":"Low","category":"excavation-safe","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651"}
+{"id":"v2-train-low-02","text":"The four-foot excavation uses a trench box and documented safe egress.","label":"Low","category":"excavation-safe","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}
+{"id":"v2-train-low-03","text":"The accessible ramp is 1:12 and includes level landings.","label":"Low","category":"accessibility-compliant","source_url":"https://www.ada.gov/law-and-regs/design-standards/2010-stds/"}
+{"id":"v2-train-low-04","text":"The parcel is outside the mapped floodplain and no BFE review applies.","label":"Low","category":"floodplain-negation","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-train-low-05","text":"Interior finish work disturbs no soil and creates no stormwater discharge.","label":"Low","category":"stormwater-negation","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-train-low-06","text":"The lobby flooring contains eighteen percent recycled aggregate.","label":"Low","category":"percentage-distractor","source_url":"https://www.ada.gov/law-and-regs/design-standards/2010-stds/"}
+{"id":"v2-train-medium-01","text":"The proposed structure lies in a mapped floodplain and requires BFE documentation.","label":"Medium","category":"floodplain","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-train-medium-02","text":"Base flood elevation and finished-floor elevation must be verified.","label":"Medium","category":"floodplain","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-train-medium-03","text":"Construction stormwater discharge requires erosion and sediment controls.","label":"Medium","category":"stormwater","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-train-medium-04","text":"Disturbed soil will need stabilization and runoff inspections after storms.","label":"Medium","category":"stormwater","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-train-medium-05","text":"A flood hazard area overlaps the parking expansion.","label":"Medium","category":"floodplain","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-train-medium-06","text":"The site plan calls for sediment control before mass grading.","label":"Medium","category":"stormwater","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-train-high-01","text":"An eight-foot trench in unstable soil lacks a protective system.","label":"High","category":"excavation-protection","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}
+{"id":"v2-train-high-02","text":"The six-foot excavation has no shoring, sloping, benching, or trench box.","label":"High","category":"excavation-protection","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}
+{"id":"v2-train-high-03","text":"A five-foot trench has no ladder, ramp, stairway, or safe egress.","label":"High","category":"excavation-egress","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651"}
+{"id":"v2-train-high-04","text":"The accessible entrance ramp is 1:10 and therefore too steep.","label":"High","category":"accessibility-ramp","source_url":"https://www.ada.gov/law-and-regs/design-standards/2010-stds/"}
+{"id":"v2-train-high-05","text":"A 1:11 ramp lacks a level landing at the doorway.","label":"High","category":"accessibility-ramp","source_url":"https://www.ada.gov/law-and-regs/design-standards/2010-stds/"}
+{"id":"v2-train-high-06","text":"Workers entered a seven-foot trench with cave-in risk and no trench box.","label":"High","category":"excavation-protection","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}

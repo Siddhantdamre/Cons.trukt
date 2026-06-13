@@ -15,8 +15,11 @@ The repository has been hardened from a flat-script prototype into a modular Pyt
 | [Live surface](https://siddhantdamre.github.io/Cons.trukt/) | Gives a fast product overview and demo direction. |
 | `src/cons_trukt/pipeline/runner.py` | Shows orchestration instead of one-off script execution. |
 | `src/cons_trukt/processing/` and `src/cons_trukt/vision/` | Separates OCR and topographical risk logic. |
-| `src/cons_trukt/retrieval/` and `src/cons_trukt/models/` | Decouples precedent retrieval from prompt/model backends. |
+| `src/cons_trukt/intent.py` and `safety.py` | Rejects non-hazard commands before severity classification. |
+| `src/cons_trukt/retrieval/` | Chroma retrieval plus a fitted, serializable offline TF-IDF index. |
 | `tests/` | Lets reviewers validate behavior without local Chroma, Ollama, OCR, or Postgres services. |
+| `benchmarks/hazard_v2/` | Authoritative edge cases, selective prediction, and OOD rejection. |
+| `benchmarks/retrieval_v2/` | Official OSHA/FEMA/EPA/ADA sources plus abstention tests. |
 
 ## Problem
 
@@ -32,8 +35,10 @@ The production pipeline is centered around `src/cons_trukt/pipeline/runner.py` a
 2. `HazardAnalyzer`
    Detects site conditions such as steep slopes, contour/topographical signals, water buffers, wetlands, and drainage hazards.
 
-3. `ChromaPrecedentStore`
-   Queries the Chroma collection `ground_knowledge` and returns historical permit precedents.
+3. Precedent retrieval
+   `ChromaPrecedentStore` supports the production memory path. The
+   dependency-free `TfidfPrecedentStore` provides a fitted, serializable
+   offline path for tests, demos, and benchmark evaluation.
 
 4. `OllamaTaskBackend`
    Prompts an Ollama-served local model (`llama3.2`) for a strict JSON task list. Gemini remains an optional backend when explicitly configured.
@@ -160,11 +165,112 @@ Validate recent task output:
 python -m cons_trukt audit --config config/default.yaml
 ```
 
+Train and evaluate the offline hazard baseline:
+
+```bash
+python scripts/build_v2_benchmarks.py
+python -m cons_trukt train-hazard-model \
+  --dataset benchmarks/hazard_v2/train.jsonl \
+  --output artifacts/hazard_nb_v2.json
+python -m cons_trukt validate-hazards
+python -m cons_trukt assess-hazard \
+  "An eight-foot trench in unstable soil lacks a protective system."
+```
+
+Fit, evaluate, and query the offline precedent index:
+
+```bash
+python -m cons_trukt fit-precedent-index \
+  --corpus benchmarks/retrieval_v2/corpus.jsonl \
+  --output artifacts/precedent_tfidf_v2.json
+python -m cons_trukt evaluate-retrieval \
+  --queries benchmarks/retrieval_v2/queries.jsonl \
+  --model artifacts/precedent_tfidf_v2.json \
+  --output results/retrieval_v2/evaluation.json
+python -m cons_trukt query-offline \
+  "ladder egress in a trench four feet deep" \
+  --model artifacts/precedent_tfidf_v2.json
+```
+
 Run tests:
 
 ```bash
-python -m pytest
+make verify
 ```
+
+Equivalent commands are `python -m ruff check src scripts tests`,
+`python -m mypy src`, and `python -m pytest -q`. Run `make evaluate` to
+regenerate the v2 retrieval and hard-OOD hazard reports.
+
+## Hazard Benchmark v2
+
+Version 2 combines the original slope/water cases with OSHA excavation
+protection and egress, FEMA floodplain elevation review, EPA construction
+stormwater controls, ADA ramp screening, threshold distractors, and 12
+unrelated requests. The production-facing predictor can accept or escalate;
+it does not force every input into `Low`, `Medium`, or `High`.
+
+| Metric | Score |
+| --- | ---: |
+| Accuracy on accepted cases | 1.000 |
+| In-domain coverage | 0.889 |
+| High-risk detection | 1.000 |
+| Unsafe High-to-Low rate | 0.000 |
+| Out-of-domain rejection | 1.000 |
+
+Four of 36 in-domain cases were escalated because confidence did not clear the
+acceptance threshold. That is intentional: selective accuracy is safer than
+claiming universal coverage. See `docs/evaluation/hazard_v2.md`.
+
+## Regulatory Retrieval Benchmark v2
+
+The v2 index contains nine frozen source summaries derived from official OSHA,
+FEMA, EPA, and U.S. Department of Justice pages. Its 15-query suite includes
+paraphrases, neighboring-rule distractors, and four unrelated questions.
+
+| Metric | Score |
+| --- | ---: |
+| Recall@1 | 1.000 |
+| Recall@3 | 1.000 |
+| Accuracy when accepted | 1.000 |
+| Out-of-domain rejection | 1.000 |
+| False acceptance | 0.000 |
+
+These are regression results on a compact curated corpus, not proof that the
+system covers every jurisdiction or current code edition.
+
+## Hazard Benchmark v1
+
+The repository includes a compact synthetic benchmark for three-way site-risk
+classification (`Low`, `Medium`, `High`). The split contains 36 training
+examples and 18 frozen held-out examples covering numeric slope thresholds,
+instability language, water-only constraints, negation, and out-of-scope notes.
+
+| System | Held-out accuracy | Macro F1 | Errors |
+| --- | ---: | ---: | ---: |
+| Deterministic rules | 1.000 | 1.000 | 0 / 18 |
+| Trained Naive Bayes baseline | 0.778 | 0.763 | 4 / 18 |
+| Conservative hybrid | 1.000 | 1.000 | 0 / 18 |
+
+These results are regression evidence on a small synthetic dataset, not a claim
+of field-ready geotechnical accuracy. The full protocol and failure analysis are
+in `docs/evaluation/hazard_v1.md`.
+
+## Precedent Retrieval Benchmark v1
+
+The offline retrieval benchmark contains 12 synthetic construction-guidance
+documents and 13 paraphrased queries. It includes a regression case that maps
+domain variants such as `steep hillside` to `slope` rather than over-ranking
+generic documents that merely contain `review` or `construction`.
+
+| Metric | Score |
+| --- | ---: |
+| Recall@1 | 1.000 |
+| Recall@3 | 1.000 |
+| Mean reciprocal rank | 1.000 |
+
+The score demonstrates deterministic ranking on a compact synthetic fixture,
+not semantic search quality on real permit archives.
 
 ## Current Demo State
 
@@ -173,16 +279,22 @@ The GitHub Pages surface gives a recruiter-friendly product overview. The local 
 ## Known Gaps
 
 - Full pipeline execution still requires local runtime dependencies and services.
-- There is no CI workflow yet.
 - There is no lockfile or Docker Compose path yet.
+- The v2 benchmark is curated from public requirements but is not yet
+  independently labeled by licensed engineers or code officials.
+- Regulatory coverage is federal and narrow; state, local, and project-specific
+  requirements must be added before deployment.
+- The lexical precedent benchmark is small and does not replace dense retrieval,
+  reranking, source freshness checks, or jurisdiction filters.
 - Real construction, permitting, geotechnical, and environmental decisions require qualified human review.
 
 ## Roadmap
 
-- Add CI for `pytest`, `ruff`, and `mypy`.
 - Add sample fixtures under `examples/`.
 - Add a Docker Compose path for one-command local review.
 - Add richer OCR/vision regression tests.
+- Expand Hazard Benchmark v1 with expert-reviewed, de-identified plan excerpts.
+- Compare the offline lexical index with dense and hybrid retrieval on de-identified records.
 - Add screenshots or a hosted interactive demo with safe synthetic data.
 
 ## License

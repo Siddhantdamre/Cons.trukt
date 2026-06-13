@@ -1,0 +1,19 @@
+{"id":"q01","query":"cave-in protection for a six foot trench","expected_sources":["osha-cave-in"]}
+{"id":"q02","query":"stable rock exception for excavation protective systems","expected_sources":["osha-cave-in"]}
+{"id":"q03","query":"ladder egress in a trench four feet deep","expected_sources":["osha-egress"]}
+{"id":"q04","query":"maximum lateral travel to a trench ladder","expected_sources":["osha-egress"]}
+{"id":"q05","query":"professional engineer design for excavation deeper than twenty feet","expected_sources":["osha-deep-design"]}
+{"id":"q06","query":"meaning of base flood elevation and one percent annual flood","expected_sources":["fema-bfe"]}
+{"id":"q07","query":"flood resistant materials and utilities below elevated buildings","expected_sources":["fema-floodproofing"]}
+{"id":"q08","query":"NPDES coverage for land disturbance and construction stormwater discharge","expected_sources":["epa-construction-permit"]}
+{"id":"q09","query":"stabilize exposed soil and preserve vegetation during construction","expected_sources":["epa-bmp"]}
+{"id":"q10","query":"maximum accessible ramp running slope one to twelve","expected_sources":["ada-ramp-slope"]}
+{"id":"q11","query":"wheelchair sidewalk curb ramp cross slope and detectable warnings","expected_sources":["ada-curb-ramp"]}
+{"id":"ood01","query":"recommend a laptop for architectural rendering","expected_sources":[],"should_abstain":true}
+{"id":"ood02","query":"write a poem about concrete","expected_sources":[],"should_abstain":true}
+{"id":"ood03","query":"predict the stock market next week","expected_sources":[],"should_abstain":true}
+{"id":"ood04","query":"what color carpet belongs in the lobby","expected_sources":[],"should_abstain":true}
+{"id":"hardneg01","query":"what is the unit price of rebar per ton this quarter","expected_sources":[],"should_abstain":true}
+{"id":"hardneg02","query":"how many days to pour the foundation slab","expected_sources":[],"should_abstain":true}
+{"id":"hardneg03","query":"which crane rental company is cheapest","expected_sources":[],"should_abstain":true}
+{"id":"hardneg04","query":"what paint sheen for the lobby walls","expected_sources":[],"should_abstain":true}

@@ -233,4 +233,10 @@ def _apply_env_overrides(settings: Settings) -> Settings:
     if os.getenv("CONS_TRUKT_DB_URL"):
         database = replace(database, url=os.environ["CONS_TRUKT_DB_URL"])
 
-    return replace(settings, processing=processing, retrieval=retrieval, model=model, database=database)
+    return replace(
+        settings,
+        processing=processing,
+        retrieval=retrieval,
+        model=model,
+        database=database,
+    )

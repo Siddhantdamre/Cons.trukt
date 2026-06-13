@@ -1,0 +1,36 @@
+{"id":"test-low-01","text":"The warehouse addition is planned on level ground with a 3% service-yard fall.","label":"Low","category":"low-grade"}
+{"id":"test-low-02","text":"No stream or wetland buffer affects the proposed work.","label":"Low","category":"negation"}
+{"id":"test-low-03","text":"A topographic drawing is included, although the footprint is flat and dry.","label":"Low","category":"benign-context"}
+{"id":"test-low-04","text":"The existing slope does not exceed 7 percent anywhere near the foundation.","label":"Low","category":"negation"}
+{"id":"test-low-05","text":"The drainage note applies to an off-site parcel and not this project.","label":"Low","category":"negation"}
+{"id":"test-low-06","text":"Stable compacted fill supports the slab with no environmental constraints.","label":"Low","category":"flat-site"}
+{"id":"test-medium-01","text":"A seasonal creek buffer overlaps the staging area.","label":"Medium","category":"stream"}
+{"id":"test-medium-02","text":"The level site includes a shallow wetland along its southern edge.","label":"Medium","category":"wetland"}
+{"id":"test-medium-03","text":"Stormwater drainage crosses the parcel but the maximum grade is 8%.","label":"Medium","category":"drainage"}
+{"id":"test-medium-04","text":"Surface runoff collects beside the planned material storage zone.","label":"Medium","category":"surface-water"}
+{"id":"test-medium-05","text":"The permit requires protection of a riparian buffer.","label":"Medium","category":"buffer"}
+{"id":"test-medium-06","text":"A drainage easement limits excavation on the east side.","label":"Medium","category":"drainage"}
+{"id":"test-high-01","text":"The survey records a 17% grade immediately behind the building pad.","label":"High","category":"numeric-slope"}
+{"id":"test-high-02","text":"An unstable slope above the access road requires stabilization.","label":"High","category":"instability"}
+{"id":"test-high-03","text":"The proposed cut crosses a steep embankment near surface water.","label":"High","category":"explicit-slope"}
+{"id":"test-high-04","text":"Contours indicate a 24.5 percent incline across the excavation limits.","label":"High","category":"numeric-slope"}
+{"id":"test-high-05","text":"Recent landslide movement is documented near the northern boundary.","label":"High","category":"landslide"}
+{"id":"test-high-06","text":"A retaining wall is required because the grade is steep and eroding.","label":"High","category":"explicit-slope"}
+{"id":"v2-test-low-01","text":"Concrete mix design specifies 21 percent fly ash on a level site.","label":"Low","category":"percentage-distractor","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-test-low-02","text":"A compliant 1:12 route has landings and handrails at the public entrance.","label":"Low","category":"accessibility-compliant","source_url":"https://www.ada.gov/law-and-regs/design-standards/2010-stds/"}
+{"id":"v2-test-low-03","text":"The project is outside the flood hazard area and above the mapped BFE.","label":"Low","category":"floodplain-negation","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-test-low-04","text":"A shallow three-foot utility trench has stable sides and a ladder.","label":"Low","category":"excavation-safe","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651"}
+{"id":"v2-test-low-05","text":"No soil disturbance or construction stormwater discharge is proposed.","label":"Low","category":"stormwater-negation","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-test-low-06","text":"Existing grade is 14.9 percent with no instability or drainage issue.","label":"Low","category":"threshold-boundary","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}
+{"id":"v2-test-medium-01","text":"Floodplain development requires base flood elevation documentation.","label":"Medium","category":"floodplain","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-test-medium-02","text":"The addition is inside a special flood hazard area.","label":"Medium","category":"floodplain","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-test-medium-03","text":"Mass grading will discharge construction stormwater from disturbed soil.","label":"Medium","category":"stormwater","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-test-medium-04","text":"The erosion-control plan requires sediment barriers and stabilization.","label":"Medium","category":"stormwater","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-test-medium-05","text":"Finished floor elevation must be compared with the BFE.","label":"Medium","category":"floodplain","source_url":"https://www.fema.gov/about/glossary/base-flood-elevation-bfe"}
+{"id":"v2-test-medium-06","text":"Runoff inspections are required while the construction site remains exposed.","label":"Medium","category":"stormwater","source_url":"https://www.epa.gov/npdes/stormwater-discharges-construction-activities"}
+{"id":"v2-test-high-01","text":"Trench is 8 feet deep in unstable soil and lacks protective system.","label":"High","category":"excavation-protection","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}
+{"id":"v2-test-high-02","text":"A six-foot excavation is open with no trench box or shoring.","label":"High","category":"excavation-protection","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}
+{"id":"v2-test-high-03","text":"The five-foot trench has no ladder or other safe egress.","label":"High","category":"excavation-egress","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651"}
+{"id":"v2-test-high-04","text":"Accessible ramp slope is 1:10 with no landing.","label":"High","category":"accessibility-ramp","source_url":"https://www.ada.gov/law-and-regs/design-standards/2010-stds/"}
+{"id":"v2-test-high-05","text":"The entry route uses a 1:9 ramp without a level landing.","label":"High","category":"accessibility-ramp","source_url":"https://www.ada.gov/law-and-regs/design-standards/2010-stds/"}
+{"id":"v2-test-high-06","text":"A seven-foot trench in collapsing soil has no protective system.","label":"High","category":"excavation-protection","source_url":"https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652"}

@@ -37,10 +37,26 @@ def generate_seed_data(output_dir: str | Path, rows: int = 1000) -> tuple[Path, 
             )
 
     standards = [
-        {"input": "Steep Slopes (15% or more)", "task": "02.50 - Slope Stabilization", "risk": "High"},
-        {"input": "Stream Buffer / Surface Water", "task": "01.50 - Silt Fencing", "risk": "High"},
-        {"input": "Rockery / Rock Outcropping", "task": "02.20 - Specialized Excavation", "risk": "Medium"},
-        {"input": "Underground Drain Field", "task": "01.10 - Utility Location & Protection", "risk": "High"},
+        {
+            "input": "Steep Slopes (15% or more)",
+            "task": "02.50 - Slope Stabilization",
+            "risk": "High",
+        },
+        {
+            "input": "Stream Buffer / Surface Water",
+            "task": "01.50 - Silt Fencing",
+            "risk": "High",
+        },
+        {
+            "input": "Rockery / Rock Outcropping",
+            "task": "02.20 - Specialized Excavation",
+            "risk": "Medium",
+        },
+        {
+            "input": "Underground Drain Field",
+            "task": "01.10 - Utility Location & Protection",
+            "risk": "High",
+        },
     ]
     standards_path.write_text(json.dumps(standards, indent=2), encoding="utf-8")
     return slope_path, standards_path
