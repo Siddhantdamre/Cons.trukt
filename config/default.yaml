@@ -1,0 +1,35 @@
+processing:
+  poppler_path: null
+  tesseract_cmd: null
+  ocr_workers: 4
+
+retrieval:
+  chroma_path: c_os_memory
+  collection_name: ground_knowledge
+  n_results: 5
+  batch_size: 128
+  csv_chunk_size: 250
+  max_rows_per_csv: 1000
+  text_chunk_size: 1000
+  text_chunk_overlap: 200
+
+model:
+  backend: ollama
+  ollama_model: llama3.2
+  gemini_model: gemini-2.0-flash
+  max_blueprint_chars: 12000
+
+database:
+  url: null
+  pool_size: 10
+  max_overflow: 20
+  table_name: smart_tasks
+
+pipeline:
+  default_input: plan.pdf
+  results_dir: results
+  enforce_safety_overrides: true
+
+logging:
+  level: INFO
+  structured: true

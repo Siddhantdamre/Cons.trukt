@@ -1,28 +1,13 @@
-import os
-from google import genai
-from pydantic import BaseModel
+"""Compatibility wrapper for the optional Gemini blueprint parser."""
 
-client = genai.Client(api_key="YOUR_API_KEY")
+from __future__ import annotations
 
-# Define the structure for the industrial output
-class SmartTaskSchema(BaseModel):
-    wbs_code: str
-    name: str
-    materials: list[str]
-    estimated_hours: int
+from pathlib import Path
 
-def parse_blueprint(file_path):
-    """Parses blueprint PDF into structured Industrial JSON"""
-    doc = client.files.upload(path=file_path)
-    prompt = "Extract the Bill of Quantities. Format as JSON with WBS codes."
-    
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-        contents=[doc, prompt],
-        config={'response_mime_type': 'application/json'}
-    )
-    
-    return response.text
+from cons_trukt.config import load_settings
+from cons_trukt.models.gemini_backend import parse_blueprint_with_gemini
 
-# Example execution:
-# tasks = parse_blueprint("site_plan_v1.pdf")
+
+def parse_blueprint(file_path: str | Path) -> str:
+    settings = load_settings()
+    return parse_blueprint_with_gemini(file_path, settings.model)

@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cons-trukt"
+version = "0.1.0"
+description = "Modular construction planning pipeline with OCR, retrieval, and local LLM reasoning."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "chromadb>=0.5",
+    "ollama>=0.3",
+    "pdfplumber>=0.11",
+    "pytesseract>=0.3",
+    "pdf2image>=1.17",
+    "sqlalchemy>=2.0",
+    "psycopg[binary]>=3.2",
+    "pandas>=2.2",
+    "pyyaml>=6.0",
+    "loguru>=0.7",
+]
+
+[project.optional-dependencies]
+gemini = ["google-genai>=1.0"]
+dev = [
+    "mypy>=1.10",
+    "pytest>=8.2",
+    "pytest-mock>=3.14",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+cons-trukt = "cons_trukt.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true

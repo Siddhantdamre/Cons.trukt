@@ -1,37 +1,33 @@
-import chromadb, ollama, json
+"""Compatibility adapter for the legacy cognitive engine API."""
 
-MODEL_NAME = 'llama3.2'
+from __future__ import annotations
 
-def refine_tasks_with_history(blueprint_text, hazard_report):
-    # Connect to the memory you populated with the 6,000+ permit records
-    chroma_client = chromadb.PersistentClient(path="./c_os_memory")
-    collection = chroma_client.get_or_create_collection(name="ground_knowledge")
+from typing import Any
 
-    # 1. Search for historical precedents
-    query_text = f"risks and permit tasks for {hazard_report['level']} projects with {hazard_report['flags']}"
-    results = collection.query(query_texts=[query_text], n_results=5)
-    history = "\n".join(results['documents'][0])
-    
-    # 2. Escape text for prompt
-    escaped_blueprint = blueprint_text[:12000].replace("{", "{{").replace("}", "}}")
-    
-    prompt = f"""
-    SYSTEM: You are the C-OS Industrial Engine.
-    
-    1. PRIMARY DATA (The "Visual Truth" - DO NOT IGNORE):
-    {escaped_blueprint}
+from cons_trukt.config import load_settings
+from cons_trukt.models.factory import build_model_backend
+from cons_trukt.retrieval.vector_store import ChromaPrecedentStore
+from cons_trukt.schemas import HazardReport
 
-    2. SECONDARY CONTEXT (Historical Permit Patterns):
-    {history}
 
-    TASK:
-    Extract ONLY the tasks physically described in the PRIMARY DATA (Garage, Deck, Concrete). 
-    Use the SECONDARY CONTEXT only to adjust the HOURS and PROFESSIONAL NAMES of those tasks.
-    
-    CRITICAL: Do not hallucinate roofing or chimneys if they are not in the primary data.
-    
-    FORMAT: {{"tasks": [{{"wbs": "CSI_Code", "name": "Task Name", "hours": float}}]}}
-    """
-    
-    response = ollama.chat(model=MODEL_NAME, format='json', messages=[{'role': 'user', 'content': prompt}])
-    return json.loads(response['message']['content'])
+def refine_tasks_with_history(
+    blueprint_text: str,
+    hazard_report: dict[str, Any] | HazardReport,
+) -> dict[str, list[dict[str, Any]]]:
+    settings = load_settings()
+    hazard = _coerce_hazard_report(hazard_report)
+    query = f"risks and permit tasks for {hazard.level} projects with {hazard.flags}"
+    precedents = ChromaPrecedentStore(settings.retrieval).query(query, settings.retrieval.n_results)
+    tasks = build_model_backend(settings.model).generate_tasks(blueprint_text, hazard, precedents)
+    return {"tasks": [task.to_dict() for task in tasks]}
+
+
+def _coerce_hazard_report(value: dict[str, Any] | HazardReport) -> HazardReport:
+    if isinstance(value, HazardReport):
+        return value
+    return HazardReport(
+        level=str(value.get("level", "Low")),
+        flags=[str(item) for item in value.get("flags", [])],
+        buffer=bool(value.get("buffer", False)),
+        density_index=float(value.get("density_index", 0.0)),
+    )
