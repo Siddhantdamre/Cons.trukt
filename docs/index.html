@@ -3,62 +3,166 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cons.trukt Document Intelligence</title>
-  <style>
-    :root { --accent: #1f883d; --ink: #1f2328; --muted: #59636e; --bg: #f6f8fa; --line: #d0d7de; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
-    header { padding: 56px 24px 40px; background: linear-gradient(135deg, #ffffff 0%, #eef4ff 100%); border-bottom: 1px solid var(--line); }
-    main { max-width: 1040px; margin: 0 auto; padding: 28px 20px 56px; }
-    .hero { max-width: 1040px; margin: 0 auto; }
-    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 0; text-transform: uppercase; font-size: 13px; }
-    h1 { font-size: clamp(34px, 7vw, 72px); line-height: 0.95; margin: 10px 0 18px; letter-spacing: 0; }
-    .tagline { max-width: 760px; color: var(--muted); font-size: 20px; line-height: 1.5; }
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-    a.button { color: #fff; background: var(--accent); padding: 12px 16px; text-decoration: none; border-radius: 8px; font-weight: 700; }
-    a.secondary { color: var(--accent); background: #fff; border: 1px solid var(--line); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-    section, .widget { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
-    section h2, .widget h2 { margin: 0 0 10px; font-size: 20px; }
-    section p, .widget p { color: var(--muted); line-height: 1.55; }
-    .widget { margin-top: 18px; }
-    .score-grid, .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
-    button, input, select { font: inherit; }
-    button { border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 8px; padding: 11px; cursor: pointer; }
-    input, select { width: 100%; margin: 8px 0 16px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-    th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--line); }
-    .cards div { border: 1px solid var(--line); border-radius: 8px; padding: 16px; background: #f6f8fa; font-weight: 700; }
-    .artifact { position: relative; height: 240px; border-radius: 8px; background: radial-gradient(circle at center, #fff, #eef4ff); border: 1px solid var(--line); overflow: hidden; }
-    .artifact span { position: absolute; width: 120px; height: 92px; border: 3px solid var(--accent); border-radius: 42% 58% 46% 54%; opacity: .82; }
-    .artifact span:nth-child(1) { left: 28%; top: 34%; transform: rotate(-12deg); }
-    .artifact span:nth-child(2) { left: 42%; top: 28%; transform: rotate(21deg); }
-    .artifact span:nth-child(3) { left: 36%; top: 48%; transform: rotate(6deg); }
-    pre { overflow: auto; background: #0d1117; color: #e6edf3; padding: 16px; border-radius: 8px; }
-    .terminal { background: #0d1117; color: #7ee787; }
-    .terminal p { color: #7ee787; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
-    footer { color: var(--muted); font-size: 13px; margin-top: 28px; }
-  </style>
+  <meta name="description" content="A browser-based OSHA trench protective-system pre-plan with soil downgrade rules, slope geometry, citations, and a printable field checklist.">
+  <title>Cons.trukt | Trench Pre-Plan</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <div class="eyebrow">Live project surface</div>
-      <h1>Cons.trukt Document Intelligence</h1>
-      <p class="tagline">Blueprint and permit-history ingestion that produces construction task ledgers.</p>
-      <div class="actions">
-        <a class="button" href="https://github.com/Siddhantdamre/Cons.trukt">View repository</a>
-        <a class="button secondary" href="https://github.com/Siddhantdamre">GitHub profile</a>
-      </div>
+  <header class="topbar">
+    <div class="brand">
+      <strong>Cons.trukt</strong>
+      <span>Excavation pre-plan</span>
+    </div>
+    <div class="top-actions">
+      <button class="icon-button" id="reset-button" type="button" title="Reset worksheet" aria-label="Reset worksheet">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+      </button>
+      <a class="icon-link" href="https://github.com/Siddhantdamre/Cons.trukt" title="View source on GitHub" aria-label="View source on GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.7c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-3 .9-3-1.5-4-2"/></svg>
+      </a>
     </div>
   </header>
-  <main>
-    <div class="grid"><section><h2>Novelty</h2><p>Turns unstructured construction documents into structured tasks, dependencies, and risk flags.</p></section>
-<section><h2>Demo</h2><p>Preview how a permit/blueprint upload becomes a task ledger and risk summary.</p></section>
-<section><h2>Next Upgrade</h2><p>Add a real sample PDF path and deploy the OCR/RAG backend behind this page.</p></section></div>
-    
-        <div class="widget"><h2>Generated Task Ledger</h2><table><tr><th>Task</th><th>Risk</th><th>Owner</th></tr><tr><td>Validate permit dates</td><td>Medium</td><td>Planner</td></tr><tr><td>Extract structural notes</td><td>High</td><td>Engineer</td></tr><tr><td>Schedule inspection</td><td>Low</td><td>Site lead</td></tr></table></div>
-    <footer>Generated demo surface on 2026-05-14. Replace this with the full deployed app as the project matures.</footer>
+
+  <main class="layout">
+    <aside class="controls" aria-label="Trench inputs">
+      <h1 class="section-heading">Field inputs</h1>
+      <p class="section-copy">Enter the conditions known before excavation. Your data remains in this browser.</p>
+
+      <form id="trench-form">
+        <div class="field-grid">
+          <div class="field full">
+            <label for="project">Project</label>
+            <input id="project" name="project" type="text" autocomplete="organization" placeholder="North sewer lateral">
+          </div>
+          <div class="field full">
+            <label for="location">Location / station</label>
+            <input id="location" name="location" type="text" autocomplete="street-address" placeholder="Station 12+40, east shoulder">
+          </div>
+          <div class="field">
+            <label for="depth">Depth (ft)</label>
+            <input id="depth" name="depth" type="number" min="0.5" max="100" step="0.5" value="8" required>
+          </div>
+          <div class="field">
+            <label for="bottom-width">Bottom width (ft)</label>
+            <input id="bottom-width" name="bottomWidth" type="number" min="0.5" max="100" step="0.5" value="3" required>
+          </div>
+          <div class="field full">
+            <label for="soil">Reported soil classification</label>
+            <select id="soil" name="soil">
+              <option>Unclassified</option>
+              <option>Stable Rock</option>
+              <option selected>Type A</option>
+              <option>Type B</option>
+              <option>Type C</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="competent-person">Competent person</label>
+            <input id="competent-person" name="competentPerson" type="text" autocomplete="name" placeholder="Name">
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Observed conditions</legend>
+          <div class="check-list">
+            <label class="check-row"><input type="checkbox" name="fissured"><span>Fissured soil or tension cracks</span></label>
+            <label class="check-row"><input type="checkbox" name="vibration" checked><span>Traffic, pile driving, or other vibration</span></label>
+            <label class="check-row"><input type="checkbox" name="previouslyDisturbed"><span>Previously disturbed soil</span></label>
+            <label class="check-row"><input type="checkbox" name="waterSeepage"><span>Water freely seeping from the soil</span></label>
+            <label class="check-row"><input type="checkbox" name="submerged"><span>Submerged soil</span></label>
+            <label class="check-row"><input type="checkbox" name="layeredDipping"><span>Layers dip toward the excavation</span></label>
+            <label class="check-row"><input type="checkbox" name="adjacentStructure"><span>Adjacent structure or foundation may be affected</span></label>
+            <label class="check-row"><input type="checkbox" name="surcharge"><span>Spoil, equipment, traffic, or other surcharge near the edge</span></label>
+            <label class="check-row"><input type="checkbox" name="hazardousAtmosphere"><span>Hazardous atmosphere could reasonably be expected</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Pre-entry confirmations</legend>
+          <div class="check-list">
+            <label class="check-row"><input type="checkbox" name="competentPersonConfirmed"><span>Visual and manual soil analysis completed by a competent person</span></label>
+            <label class="check-row"><input type="checkbox" name="check-utilities"><span>Underground installations located and protected</span></label>
+            <label class="check-row"><input type="checkbox" name="check-spoil"><span>Spoil, materials, and equipment kept at least 2 ft from the edge</span></label>
+            <label class="check-row"><input type="checkbox" name="check-egress"><span>Safe egress planned within 25 ft lateral travel when required</span></label>
+            <label class="check-row"><input type="checkbox" name="check-inspection"><span>Competent-person inspection completed before entry</span></label>
+            <label class="check-row"><input type="checkbox" name="check-weather"><span>Reinspection plan covers rain, vibration, and changed conditions</span></label>
+          </div>
+        </fieldset>
+
+        <button class="primary" type="submit">Build pre-plan</button>
+        <p class="privacy-note">This worksheet is educational decision support. It does not classify soil, design shoring, or replace the competent person or registered professional engineer required by law.</p>
+      </form>
+    </aside>
+
+    <section class="workspace" aria-live="polite">
+      <div id="empty-state" class="empty-state">
+        <div>
+          <div class="empty-diagram" aria-hidden="true"></div>
+          <strong>Build a trench pre-plan</strong>
+          <span>Complete the field inputs to calculate the conservative sloping envelope and entry hold points.</span>
+        </div>
+      </div>
+
+      <div id="result-shell" class="result-shell hidden">
+        <div class="result-head">
+          <div>
+            <h1 id="report-title">Excavation pre-plan</h1>
+            <p id="report-subtitle"></p>
+          </div>
+          <span id="status" class="status">Hold before entry</span>
+        </div>
+
+        <div class="summary-grid">
+          <div class="metric"><span>Effective soil</span><strong id="metric-soil"></strong></div>
+          <div class="metric"><span>Maximum slope</span><strong id="metric-slope"></strong></div>
+          <div class="metric"><span>Top width</span><strong id="metric-width"></strong></div>
+          <div class="metric"><span>Design authority</span><strong id="metric-authority"></strong></div>
+        </div>
+
+        <div class="result-grid">
+          <div>
+            <section class="panel">
+              <div class="panel-header"><h2>Protective-system decision</h2></div>
+              <div class="panel-body">
+                <div id="decision" class="decision"></div>
+                <div class="trench-figure">
+                  <canvas id="trench-canvas" width="760" height="290" aria-label="Calculated trench cross-section"></canvas>
+                  <div class="figure-note">Planning geometry only. Actual slopes must be no steeper than the allowable slope and may need to be flatter for distress, surcharge loads, or changing conditions.</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel" style="margin-top:18px">
+              <div class="panel-header"><h2>Hold points and warnings</h2></div>
+              <div class="panel-body"><ul id="warnings" class="warning-list"></ul></div>
+            </section>
+          </div>
+
+          <div>
+            <section class="panel">
+              <div class="panel-header"><h2>Pre-entry record</h2></div>
+              <div class="panel-body">
+                <ul id="report-checks" class="report-checks"></ul>
+                <div class="report-actions" style="margin-top:16px">
+                  <button id="copy-button" class="subtle-button" type="button">Copy summary</button>
+                  <button id="print-button" class="subtle-button" type="button">Print report</button>
+                  <button id="download-button" class="subtle-button" type="button">Download JSON</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel" style="margin-top:18px">
+              <div class="panel-header"><h2>Primary references</h2></div>
+              <div class="panel-body"><ul id="citations" class="citation-list"></ul></div>
+            </section>
+          </div>
+        </div>
+
+        <p class="scope">Federal OSHA references are current links to the official standard. State-plan requirements, project specifications, manufacturer tabulated data, and local rules may be stricter. Review the <a href="https://www.osha.gov/trenching-excavation" target="_blank" rel="noreferrer">OSHA trenching and excavation topic page</a> before field use.</p>
+      </div>
+    </section>
   </main>
+
+  <script type="module" src="./app.mjs"></script>
 </body>
 </html>

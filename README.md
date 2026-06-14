@@ -4,7 +4,10 @@
 [![Portfolio Guide](https://img.shields.io/badge/Portfolio-context-0969DA?style=for-the-badge&logo=github)](https://github.com/Siddhantdamre/Siddhantdamre/blob/main/PORTFOLIO.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Cons.trukt is an experimental Python construction-intelligence prototype. It combines PDF blueprint extraction, OCR fallback, rule-based ground-risk analysis, local retrieval over permit history, LLM task generation, and optional PostgreSQL persistence to turn unstructured construction documents into a task ledger.
+Cons.trukt is a construction decision-support project with two connected surfaces:
+
+- the [live trench pre-plan](https://siddhantdamre.github.io/Cons.trukt/), a zero-key browser tool for OSHA soil-condition downgrades, protective-system planning geometry, entry hold points, official citations, and printable field records
+- a typed Python document-intelligence pipeline for PDF extraction, OCR fallback, hazard analysis, regulatory retrieval, structured task generation, and optional PostgreSQL persistence
 
 The repository has been hardened from a flat-script prototype into a modular Python package. Legacy script names are still present as compatibility wrappers, but production logic now lives under `src/cons_trukt/` with typed configuration, batch ingestion, structured logging, and testable adapters.
 
@@ -12,7 +15,7 @@ The repository has been hardened from a flat-script prototype into a modular Pyt
 
 | What to check | Why it matters |
 | --- | --- |
-| [Live surface](https://siddhantdamre.github.io/Cons.trukt/) | Gives a fast product overview and demo direction. |
+| [Live trench pre-plan](https://siddhantdamre.github.io/Cons.trukt/) | Runs immediately in the browser and produces a printable, clause-cited field worksheet. |
 | `src/cons_trukt/pipeline/runner.py` | Shows orchestration instead of one-off script execution. |
 | `src/cons_trukt/processing/` and `src/cons_trukt/vision/` | Separates OCR and topographical risk logic. |
 | `src/cons_trukt/intent.py` and `safety.py` | Rejects non-hazard commands before severity classification. |
@@ -24,6 +27,13 @@ The repository has been hardened from a flat-script prototype into a modular Pyt
 ## Problem
 
 Construction teams often make decisions from disconnected PDFs, scans, spreadsheets, permit records, and project-management updates. Cons.trukt explores how to turn that fragmented input into a decision-support workflow that is easier to inspect, test, and review.
+
+For direct field use, the public app intentionally narrows that broad problem to
+one high-consequence task: planning cave-in protection before a trench is
+entered. It applies the federal OSHA Subpart P tables conservatively, requires
+competent-person confirmation, treats freely seeping water as Type C, keeps the
+under-5-ft exception conditional, and places excavations deeper than 20 ft on an
+RPE-design hold. The calculator is not a soil classifier or shoring design.
 
 ## Core Workflow
 
